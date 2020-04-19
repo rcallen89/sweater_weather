@@ -23,6 +23,7 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fast_jsonapi'
 gem 'figaro'
+gem 'faraday'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
@@ -36,6 +37,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'faker'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
