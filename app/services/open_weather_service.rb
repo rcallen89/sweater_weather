@@ -14,5 +14,4 @@ class OpenWeatherService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-# /data/2.5/onecall?lat=30.267153&lon=-97.743057&units=imperial&appid=0d9db90190c8ab1f18480a01aac48791
 end
