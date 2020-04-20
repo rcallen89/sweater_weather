@@ -42,6 +42,8 @@ VCR.configure do |config|
   config.default_cassette_options = { record: :new_episodes }
   config.filter_sensitive_data('<OPEN_WEATHER_ONE>') { ENV['OPEN_WEATHER_ONE'] }
   config.filter_sensitive_data('<GOOGLE_API_KEY>') { ENV['GOOGLE_API_KEY'] }
+  config.filter_sensitive_data('<UNSPLASH_ACCESS_KEY>') { ENV['UNSPLASH_ACCESS_KEY'] }
+  config.filter_sensitive_data('<UNSPLASH_SECRET_KEY>') { ENV['UNSPLASH_SECRET_KEY'] }
 end
 
 RSpec.configure do |config|
