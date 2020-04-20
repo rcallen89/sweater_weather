@@ -1,11 +1,12 @@
-class OpenWeatherService
+# frozen_string_literal: true
 
+class OpenWeatherService
   def self.conn
-    conn = Faraday.new("https://api.openweathermap.org")
+    conn = Faraday.new('https://api.openweathermap.org')
   end
 
   def self.forecast_data(lat, lon)
-    response = conn.get("/data/2.5/onecall") do |call|
+    response = conn.get('/data/2.5/onecall') do |call|
       call.params[:lat] = lat
       call.params[:lon] = lon
       call.params[:units] = 'imperial'
@@ -13,5 +14,4 @@ class OpenWeatherService
     end
     JSON.parse(response.body, symbolize_names: true)
   end
-
 end

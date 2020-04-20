@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Background
   attr_reader :image_url, :id
 
@@ -9,5 +11,4 @@ class Background
   def get_image_url(location)
     BackgroundService.get_image(location)[:results][0][:urls][:raw]
   end
-
 end

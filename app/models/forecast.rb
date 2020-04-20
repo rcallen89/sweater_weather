@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Forecast
   attr_reader :id,
               :current_weather,
@@ -24,22 +26,19 @@ class Forecast
   end
 
   def hourly(hourly_weather)
-    hourly_weather.reduce(Hash.new) do |acc, hour|
+    hourly_weather.each_with_object({}) do |hour, acc|
       acc[hour[:dt]] = hour.slice(:temp, :weather)
-      acc
     end
   end
 
   def daily(daily_weather)
-    daily_weather.reduce(Hash.new()) do |acc, day|
+    daily_weather.each_with_object({}) do |day, acc|
       acc[day[:dt]] = {
         high_temp: day[:temp][:max],
         low_temp: day[:temp][:min],
         weather: day[:weather],
         rain: day[:rain]
       }
-      acc
     end
   end
-
 end
