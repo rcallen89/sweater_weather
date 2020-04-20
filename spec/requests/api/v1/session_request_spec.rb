@@ -6,10 +6,8 @@ RSpec.describe 'Session POST requestion', type: :request do
             password: "password",
             password_confirmation: "password")
 
-    passed_info = {email: "example@example.com",
-                   password: "password"}
-
-    post '/api/v1/sessions', params: passed_info
+    post '/api/v1/sessions', params: {session: {email: "example@example.com",
+                                                password: "password"}}
 
     expect(response).to be_successful
 
@@ -24,10 +22,8 @@ RSpec.describe 'Session POST requestion', type: :request do
             password: "password",
             password_confirmation: "password"}
 
-    passed_info = {email: "example@example.com",
-                   password: "password123"}
-
-    post '/api/v1/sessions', params: passed_info
+    post '/api/v1/sessions', params: {session: {email: "example@example.com",
+                                                password: "password123"}}
 
     parsed = JSON.parse(response.body, symbolize_names: true)
 

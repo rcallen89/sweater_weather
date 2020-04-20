@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'User POST requestion', type: :request do
   it 'will create a user when the proper params are sent' do
-    user = {email: "example@example.com",
-            password: "password",
-            password_confirmation: "password"}
 
-    post '/api/v1/users', params: user
+
+    post '/api/v1/users', params: {user: {email: "example@example.com",
+                                          password: "password",
+                                          password_confirmation: "password"}}
 
     expect(response).to be_successful
 
@@ -17,11 +17,10 @@ RSpec.describe 'User POST requestion', type: :request do
   end
 
   it 'should return 400 error if not correct information is sent' do
-    user = {email: "example@example.com",
-            password: "password",
-            password_confirmation: "password123"}
 
-    post '/api/v1/users', params: user
+    post '/api/v1/users', params: {user: {email: "example@example.com",
+                                          password: "password",
+                                          password_confirmation: "password123"}}
 
     parsed = JSON.parse(response.body, symbolize_names: true)
 
