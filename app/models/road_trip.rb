@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoadTrip
   attr_reader :origin,
               :destination,
@@ -24,5 +26,4 @@ class RoadTrip
     forecasted_hour = OpenWeatherService.forecast_data(lat_long[:lat], lat_long[:lng])[:hourly][travel_time + 1]
     [forecasted_hour[:temp], forecasted_hour[:weather][0][:main]]
   end
-
 end

@@ -1,5 +1,6 @@
-class DirectionService
+# frozen_string_literal: true
 
+class DirectionService
   def self.connection
     Faraday.new('https://maps.googleapis.com')
   end
@@ -12,5 +13,4 @@ class DirectionService
     end
     JSON.parse(response.body, symbolize_names: true)[:routes][0][:legs][0].slice(:duration, :end_location)
   end
-
 end
