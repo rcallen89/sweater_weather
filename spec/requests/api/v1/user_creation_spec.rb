@@ -17,14 +17,14 @@ RSpec.describe 'User POST requestion', type: :request do
   end
 
   it 'should return 400 error if not correct information is sent' do
-
     post '/api/v1/users', params: {user: {email: "example@example.com",
                                           password: "password",
                                           password_confirmation: "password123"}}
 
+    expect(response).not_to be_successful
+
     parsed = JSON.parse(response.body, symbolize_names: true)
 
-    expect(parsed[:status]).to eq(400)
     expect(parsed[:body]).to eq("Password confirmation doesn't match Password")
   end
 end

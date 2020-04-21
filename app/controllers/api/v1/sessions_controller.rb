@@ -4,9 +4,9 @@ class Api::V1::SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email])
     if user &.authenticate(params[:session][:password])
-      render json: { status: 200, body: UserSerializer.new(user) }
+      render json: {  body: UserSerializer.new(user) }, status: 200
     else
-      render json: { status: 400, body: 'Bad Credentials' }
+      render json: {  body: 'Bad Credentials' }, status: 400
     end
   end
 end

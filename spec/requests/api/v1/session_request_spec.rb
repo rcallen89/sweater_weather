@@ -25,9 +25,10 @@ RSpec.describe 'Session POST requestion', type: :request do
     post '/api/v1/sessions', params: {session: {email: "example@example.com",
                                                 password: "password123"}}
 
+    expect(response).not_to be_successful
+
     parsed = JSON.parse(response.body, symbolize_names: true)
 
-    expect(parsed[:status]).to eq(400)
     expect(parsed[:body]).to eq("Bad Credentials")
   end
 end
